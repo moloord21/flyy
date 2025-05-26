@@ -1,11 +1,12 @@
 services:
   - type: worker
     name: telegram-video-bot
-    runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python bot.py
+    env: docker
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: API_ID
-        value: "123456"            # عدل هذا بقيمة api_id
+        value: your_api_id
       - key: API_HASH
-        value: "your_api_hash"     # عدل هذا بقيمة api_hash
+        value: your_api_hash
+      - key: PHONE_NUMBER
+        value: +your_phone_number
