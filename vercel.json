@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "functions": {
+    "index.ts": {
+      "runtime": "@vercel/node",
+      "maxDuration": 300
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.ts"
+    }
+  ],
+  "env": {
+    "API_ID": "@api_id",
+    "API_HASH": "@api_hash", 
+    "BOT_TOKEN": "@bot_token",
+    "SESSION_STRING": "@session_string"
+  }
+}
