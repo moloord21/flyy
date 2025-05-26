@@ -1,2 +1,3 @@
-telethon
-ffmpeg-python
+telethon==1.36.0
+ffmpeg-python==0.2.0
+asyncio
