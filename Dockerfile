@@ -1,16 +1,19 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
-# تثبيت ffmpeg
-RUN apt-get update && \
-    apt-get install -y ffmpeg && \
-    apt-get clean
+# تثبيت FFmpeg
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
-# نسخ الملفات
 WORKDIR /app
-COPY . .
 
-# تثبيت الباكدجات
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# الأمر الرئيسي للتشغيل
-CMD ["python", "bot.py"]
+COPY . .
+
+# إنشاء مجلد للتحميلات
+RUN mkdir -p downloads
+
+CMD ["python", "main.py"]
