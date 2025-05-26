@@ -1,19 +1,12 @@
-FROM python:3.11-slim
+# Telegram API Credentials من my.telegram.org
+API_ID=22404426
+API_HASH=e71b31ef9978ee777d1fd8bfa1b3a085
 
-# تثبيت FFmpeg
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    wget \
-    && rm -rf /var/lib/apt/lists/*
+# Bot Token من BotFather  
+BOT_TOKEN=7335407842:AAGmXFhJGZ5OcNkjtJ9-jPP6uwg5bfrUHLI
 
-WORKDIR /app
+# Session String من تشغيل npm run auth
+SESSION_STRING=your_session_string_here
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-# إنشاء مجلد للتحميلات
-RUN mkdir -p downloads
-
-CMD ["python", "main.py"]
+# بيئة التشغيل
+NODE_ENV=development
